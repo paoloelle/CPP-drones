@@ -1,0 +1,72 @@
+\section{Implementation}
+The implementation step is the physical construction of the \ac{uav}, this involves the selection of all the elements, both hardware (e.g. platform and its components) and software (e.g. autopilot flight stack).
+
+\subsection{Autopilot selection}
+Autopilot selection is made by evaluating possible pros and cons which every autopilot fligh stack brings with it. Three possible solution were evaluated:
+\begin{enumerate}
+	\item INAV \cite{inav}
+	\item PX4 \cite{px4}
+	\item Agilicious \cite{foehn2022agilicious}
+\end{enumerate}
+There are a lot of reason which can determine the choice of one solution instead of another, a preliminary evaluation is made considering the informations available on the web (official documentation and other sources). These parameters have been accounted:
+\begin{itemize}
+	\item configuration
+	\item missions definition
+	\item future developments
+\end{itemize}
+\textit{Configuration} denotes the level of complexity needed to configure flight controller for the first flight, \textit{missions definition} takes into account how to define missions, and \textit{future development} indicates compatibility with other framework, software and so on.
+
+INAV's configuration seems easy as PX4, the main difference is the guide: for INAV you can follow some videos on Youtube at this \href{https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8}{link}, for PX4 it's necessary to follow sections from \href{https://docs.px4.io/main/en/assembly/}{\textit{Basic Assembly}} to \href{https://docs.px4.io/main/en/flying/}{\textit{Flying}} in the official documentation.
+Agilicious doesn't have a section related to the configuration steps for the first real flight like the above mentioned.
+
+INAV provide a \ac{gcs} which is capable of define only waypoints which the \ac{uav} has to visit, as shown for example \href{https://www.youtube.com/watch?v=J6UBai-OIYQ}{here}. PX4 typically use \ac{qgc} as \ac{gcs}\footnote{\ac{qgc} supports only PX4 and Ardupilot}, here different missions can be defined and it is worth to note that there is also survey missions which seems particularly suited with the aim of this project. Agilicious doesn't not provide a \ac{gcs} for missions definition, but it has a module called \href{https://agilicious.readthedocs.io/en/main/modules/references.html}{\texttt{reference}} which implements different ways of generating reference trajectories.
+
+I wasn't able to find any documentation regarding interfacing between INAV and \ac{ros}, PX4 has a subsection dedicated to \href{https://docs.px4.io/main/en/ros/}{ROS communication with PX4}. In addiction PX4 has a MATLAB package called UAV Toolbox Support Package for PX4 Autopilots \cite{mathworkspx4}. 
+Agilicious has a very good structure for future developments beacause you can change controller or estimator by simply modify a \texttt{yaml} file. It's not provided a way to integrate GPS measurements. An interface  for \ac{ros} called \href{https://agilicious.readthedocs.io/en/main/integration/ros.html}{\texttt{agiros}} is provided. Both PX4 and Agilicious docs propose a simulator.  
+
+In conclusion the better idea should be to try the autopilot in this order: PX4, Agilicious, INAV.
+
+%todo vedi se inserire una sezione con le varie componenti hardware utilizzate
+
+\subsection{PX4 configuration}
+Before first flight PX4 Autopilot needs some steps to follow to configure the autopilot, this one are documented in PX4 documentation's section called \href{https://docs.px4.io/main/en/config/}{Standard Configuration}. The procedure is quite straightforward but some problems may arise during these steps.
+
+\subsection*{Troubleshooting}
+\begin{description}[style=nextline]
+	\item[Firmware version] \ac{qgc} provides au automatic way to flash the latest firmware\footnote{At the time of writing this report, i.e. September 2023, the last stable release is \texttt{v1.13.3}.}, however all version 13 express same problem with our specific hardware. More specifically the problem is related to the Wi-Fi module because with the firmware version \texttt{v1.13.x} the autopilot is unable to connect with \ac{qgc}. So I found that version \texttt{v1.12.3}\footnote{Firmware releases available \href{https://github.com/PX4/PX4-Autopilot/releases}{here}.} fixes this problem.
+	\item [Autotune] Having downgraded to the version \texttt{v1.12.3} determined the impossibility to use the autotune procedure because this is available from \texttt{v1.13.0}.
+\end{description}
+
+%todo da qualche parte prova a scrivere anche del problema del magnetometro
+
+\subsection{Optitrack configuration}
+After some outside experiments (in which human pilot successfully drove the quadcopter) we decided to take the next flight test in an indoor scenario; this beacause an indoor environment is safer if compared to the outdoor one in terms of damaged caused by the drone's crashing.
+
+Before flying, the communication between Optitrack and flight controller needs to be configured, we can think the Optritrack as the indoor counterpart of the GPS. To configure the Optritrack with PX4 there also a dedicated section named \href{https://docs.px4.io/main/en/ros/external_position_estimation.html}{Using Vision or Motion Capture Systems for Position Estimation}, this one provides all the necessary steps to configure the communication. Please note that there is also a \href{https://docs.px4.io/main/en/ros/external_position_estimation.html#specific-system-setups}{dedicated subsection} for Optitrack system.
+
+\subsection*{Troubleshooting}
+\begin{description}[style=nextline]
+	\item[Parameters] Having used an older firmware version, some parameters\footnote{Full parameter list \href{https://docs.px4.io/main/en/advanced_config/parameter_reference.html}{here}.} have been replaced with others; these ones are listed in the table below. The first column shows the actual name of the parameters the second columns shows the counterpart on the firmware version used in this project.
+	\begin{center} 
+	\begin{tabular}{|c|c|}
+		\hline
+		PX4 docs naming & \texttt{v1.12.3} naming \\
+		\hline
+		\texttt{EKF2\_EV\_CTRL}  &  \texttt{EKF2\_AID\_MASK}  \\
+		\hline
+		\texttt{EKF2\_HGT\_REF}  &  \texttt{EKF2\_HGT\_MODE}   \\
+		\hline
+		\texttt{EKF2\_GPS\_CTRL} & \texttt{EKF2\_AID\_MASK}  \\
+		\hline
+	\end{tabular}
+\end{center}
+	Another set of parameters are the ones used for the preflight check, Disabling these prevents the drone from checking the correct operation of the corresponding sensors:
+	\begin{itemize}
+		\item \texttt{SYS\_HAS\_BARO}
+		\item \texttt{SYS\_HAS\_GPS}
+		\item \texttt{SYS\_HAS\_MAG}
+		\end{itemize}
+	
+	 
+
+\end{description}

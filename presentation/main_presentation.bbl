@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{inav}
+{iNavFlight}.
+\newblock {iNav}.
+\newblock {Available at: \url{https://github.com/iNavFlight/inav}}, {2023}.
+\newblock {Accessed: 12 July 2023}.
+
+\bibitem{px4}
+{PX4 Autopilot Development Team}.
+\newblock {PX4 Autopilot}.
+\newblock {Available at: \url{https://px4.io/}}, {2023}.
+\newblock {Accessed: 12 July 2023}.
+
+\bibitem{foehn2022agilicious}
+Philipp Foehn, Elia Kaufmann, Angel Romero, Robert Penicka, Sihao Sun, Leonard
+  Bauersfeld, Thomas Laengle, Giovanni Cioffi, Yunlong Song, Antonio Loquercio,
+  et~al.
+\newblock Agilicious: Open-source and open-hardware agile quadrotor for
+  vision-based flight.
+\newblock {\em Science robotics}, 7(67):eabl6259, 2022.
+
+\bibitem{mathworkspx4}
+{MathWorks}.
+\newblock {PX4 Support Package}.
+\newblock {Available at: \url{https://it.mathworks.com/help/supportpkg/px4/}},
+  {2023}.
+\newblock {Accessed: 12 July 2023}.
+
+\end{thebibliography}

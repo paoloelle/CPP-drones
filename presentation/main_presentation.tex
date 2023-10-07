@@ -1,0 +1,113 @@
+\documentclass{beamer}
+
+\usecolortheme{crane}
+
+\title{Development and testing of methods for drones control}
+\author{Paolo Leopardi}
+\institute{Università degli Studi di Perugia}
+\date{\today}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=blue,
+	citecolor=cyan,
+}
+
+\usepackage{acro}
+
+%\usepackage{enumitem}
+
+
+% list of acronyms
+\DeclareAcronym{cpp}{
+	short = CPP,
+	long = Coverage Path Planning,
+}
+
+\DeclareAcronym{uav}{
+	short = UAV,
+	long = Unmanned Aerial Vehicle,
+}
+
+\DeclareAcronym{gcs}{
+	short = GCS,
+	long = Ground Control Station,
+}
+
+\DeclareAcronym{qgc}{
+	short = QGC,
+	long = QGroundControl,
+}
+
+\DeclareAcronym{ros}{
+	short = ROS,
+	long = Robot Operating System,
+}
+
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	\section{Implementation}
+	
+	\begin{frame}
+		\frametitle{Flight Stack selection}
+		Autopilot selection is made by evaluating possible pros and cons which every autopilot flight stack brings with it. Three possible solution were evaluated:
+		\begin{itemize}
+			\item INAV \cite{inav}
+			\item PX4 \cite{px4}
+			\item Agilicious \cite{foehn2022agilicious}
+		\end{itemize}
+
+	Evaluation based on the following parameters:
+	\begin{itemize}
+		\item configuration
+		\item missions definition
+		\item future developments
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame} \frametitle{Configuration}
+		\begin{description}
+			\item[INAV] videos on Youtube at this \href{https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8}{link}
+			\item[PX4] follow sections from \href{https://docs.px4.io/main/en/assembly/}{\textit{Basic Assembly}} to \href{https://docs.px4.io/main/en/flying/}{\textit{Flying}} in the official documentation
+			\item[Agilicious] no description
+		\end{description}		
+	\end{frame}
+
+	\begin{frame} \frametitle{Missions definition}
+		\begin{description}
+			\item[INAV] provide a \ac{gcs} which is capable of define only waypoints \href{https://www.youtube.com/playlist?list=PLOUQ8o2_nCLkfcKsWobDLtBNIBzwlwRC8}{link}
+			\item[PX4] typically use \ac{qgc} as \ac{gcs}\footnote{\ac{qgc} supports only PX4 and Ardupilot}, here different missions can be defined and it is worth to note that there is also survey missions which seems particularly suited with the aim of this project
+			\item[Agilicious] doesn't not provide a \ac{gcs} for missions definition, but it has a module called \href{https://agilicious.readthedocs.io/en/main/modules/references.html}{\texttt{reference}} which implements different ways of generating reference trajectories
+		\end{description}	
+	\end{frame}
+
+\begin{frame} \frametitle{Future developments}
+	\begin{description}
+		\item[INAV] no description to interface with \ac{ros} 
+		\item[PX4] has a subsection dedicated to \href{https://docs.px4.io/main/en/ros/}{ROS communication with PX4}. In addiction PX4 has a MATLAB package called UAV Toolbox Support Package for PX4 Autopilots \cite{mathworkspx4}
+		\item[Agilicious] has very good structure for future developments beacause you can change controller or estimator by simply modify a \texttt{yaml} file. It's not provided a way to integrate GPS measurements. An interface  for \ac{ros} called \href{https://agilicious.readthedocs.io/en/main/integration/ros.html}{\texttt{agiros}} is provided.
+	\end{description}
+Both PX4 and Agilicious docs propose a simulator.
+\end{frame}
+	
+\begin{frame} \frametitle{Conclusions}
+	\begin{enumerate}
+		\item PX4
+		\item Agilicious
+		\item INAV				
+	\end{enumerate}
+\end{frame}
+	
+	\begin{frame}[allowframebreaks]
+		\frametitle{References}
+
+		\bibliographystyle{unsrt} 
+		\bibliography{../report/bibliography}
+	\end{frame}
+	
+\end{document}

@@ -1,0 +1,17 @@
+\section{Navigation}
+To successfully cover the area of interest the quadcopter has to navigate following a certain logic and take into account different factors such as the shape and the dimension of the area, presence of obstacles, vehicle used and so on. There is a class of algorithm called \ac{cpp} which is well suited for this aim.
+
+\subsection{Coverage Path Planning}
+Given an area of interest the \ac{cpp} problem consist of planning a path which covers the entire target environment considering the vehicle's motion restriction and sensor's characteristics, while avoiding passing over obstacles \cite{cabreira2019survey}. These algorithms can be classified into two main categories: offline and online \cite{fevgas2022coverage}. Offline algorithms need a previous knowledge of the search area, online algorithm instead are based on real-time data acquisition.
+
+Another classification is based on the decomposition method thaat can be classified in:
+\begin{itemize}
+	\item Cellular decomposition
+	\begin{itemize}
+		\item Exact decomposition
+		\item Approximate decomposition
+	\end{itemize}
+	\item No decomposition
+\end{itemize}
+Cellular decomposition methods are based in dividing the surface into cells: in the exact decomposition the workspace is splitted in sub-areas whose re-union exactly occuped the target area \cite{cabreira2019survey}. In the approximate decomposition the area is usally divided using a grid where the size of the squares is typically determined for example by the footprint of the camera mounted on the robot. In no decomposition techniques, as the name suggest, isn't applied any type of decomposition.
+Taking in to account the aim of the project, i.e. the \ac{uav} has to collect data in different positions of an area, the best solution is the approximate decomposition technique beacuse we don't need to cover every centimetre of the area (like an autonomous lawn mower), we need to determine the amount of waypoints that guarantees an exhaustive data collection compared to the target area.
