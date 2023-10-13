@@ -76,7 +76,7 @@ end
 %% add reference altitude to waypoint
 
 ref_height =  transpose(ones(1, size(waypoint, 1))*10);
-watypoint3D = [waypoint, ref_height]
+waypoint3D = [waypoint, ref_height]
 
 
 
