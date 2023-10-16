@@ -1,6 +1,5 @@
 % get ip addresses needed to communicate with WSL
 
-% Execute the command and capture the output
 [~, ipAdd_wsl] = system('wsl ip -4 addr show eth0 | findstr "inet"');
 
 ipAdd_wsl = regexp(ipAdd_wsl, '\d+\.\d+\.\d+\.\d+', 'match');
