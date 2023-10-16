@@ -38,9 +38,9 @@ grid on
 % in realtà il calcolo degli waypoint è già l'algoritmo CPP, poi si
 % determina l'ordine in cui li visito però per il momento lascio così 
 
-target_area_meters = polyshape([0 800 800 0], [0 0 400 400])
+target_area_meters = polyshape([0 2 2 0], [0 0 2 2])
 
-robot_footprint = polyshape([0 100 100 0], [0 0 100 100]);
+robot_footprint = polyshape([0 1 1 0], [0 0 1 1]);
 waypoint = calculateWaypoint(target_area_meters, robot_footprint); 
 
 figure
@@ -75,7 +75,7 @@ end
 
 %% add reference altitude to waypoint
 
-ref_height =  transpose(ones(1, size(waypoint, 1))*10);
+ref_height =  transpose(ones(1, size(waypoint, 1))*1);
 waypoint3D = [waypoint, ref_height]
 
 

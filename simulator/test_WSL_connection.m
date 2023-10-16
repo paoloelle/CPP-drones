@@ -1,13 +1,25 @@
+% get ip addresses needed to communicate with WSL
+
+% Execute the command and capture the output
+[~, ipAdd_wsl] = system('wsl ip -4 addr show eth0 | findstr "inet"');
+
+ipAdd_wsl = regexp(ipAdd_wsl, '\d+\.\d+\.\d+\.\d+', 'match');
+ipAdd_wsl = ipAdd_wsl(1)
+
+[~, ipAdd_windows] = system('ipconfig | findstr /C:"vEthernet (WSL)" /C:"IPv4"', '-echo');
+ipAdd_windows = regexp(ipAdd_windows, '172.\d+\.\d+\.\d+', 'match')
+
 
 % wsl ip addres -> $ ifconfig -> eth0, inet
-setenv('ROS_MASTER_URI','http://172.24.219.119:11311')
+string_ROS_MASTER_URI = strcat('http://', ipAdd_wsl, ':11311')
+setenv('ROS_MASTER_URI',string_ROS_MASTER_URI)
 
 % wsl ip on windows -> $ ipconfig -> Scheda Ethernet vEthernet (WSL), indirizzo IPV4 
-setenv('ROS_IP','172.24.208.1') 
+setenv('ROS_IP', ipAdd_windows) 
 
 rosinit
 
-rostopic list 
+rostopic list
 
 
 %%
