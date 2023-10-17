@@ -1,0 +1,8 @@
+\section{Simulation}
+To test some \ac{cpp} algorithms is worth to implement an environment which allows to drive a drone autonomously in a safe way, without any risk of collision. PX4 offers different simulators which allow to develop \ac{sitl} simulation \cite{px4_simulation}. More in details, in the section named \textit{MAVROS Offboard control example (Python)} \cite{px4_ros_mavros} there is a useful example on how to setup PX4, Gazebo and MAVROS to run a simulation.
+
+To implement a complete pipeline which allows to develop \ac{cpp} algorithms, simulate the quadcopter and analyse the result MATLAB has been employed beside the simulator structure which exploit PX4, Gazebo and MAVROS, mentioned above. MATLAB is used to determine the area, develop the \ac{cpp} algorithms and pass the waypoint to the simulator. After the simulation phase, which is executed in Gazebo environment the results are visualized and analysed in MATLAB again.
+
+\subsection{MATLAB code} 
+%\lstinputlisting[language=Octave, label=sc:quad_lin_dyn, caption={[\texttt quadcopter\_linearized\_dynamics.m]\texttt quadcopter\_linearized\_dynamics.m}]{../schemi_definitivi/quadcopter_linearized_dynamics.m}
+\lstinputlisting[language=Octave, linerange={5-34}]{../simulator/main.m}

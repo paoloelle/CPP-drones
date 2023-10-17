@@ -33,10 +33,7 @@ xlabel('X (m)')
 ylabel('Y (m)')
 grid on
 
-
-%% get waypoints
-% in realtà il calcolo degli waypoint è già l'algoritmo CPP, poi si
-% determina l'ordine in cui li visito però per il momento lascio così 
+%% CPP algorithm
 
 target_area_meters = polyshape([0 2 2 0], [0 0 2 2])
 

@@ -39,4 +39,18 @@ Philipp Foehn, Elia Kaufmann, Angel Romero, Robert Penicka, Sihao Sun, Leonard
   {2023}.
 \newblock {Accessed: 12 July 2023}.
 
+\bibitem{px4_simulation}
+{PX4 Autopilot Development Team}.
+\newblock {PX4 Documentation: Simulation}.
+\newblock {Available at: \url{https://docs.px4.io/main/en/simulation/}},
+  {2023}.
+\newblock {Accessed: 17 October 2023}.
+
+\bibitem{px4_ros_mavros}
+{PX4 Autopilot Development Team}.
+\newblock {PX4 Documentation: MAVROS Offboard Python Example}.
+\newblock {Available at:
+  \url{https://docs.px4.io/main/en/ros/mavros_offboard_python.html}}, {2023}.
+\newblock {Accessed: 17 October 2023}.
+
 \end{thebibliography}
