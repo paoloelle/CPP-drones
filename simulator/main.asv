@@ -53,6 +53,8 @@ ylabel('Y (m)')
 grid on
 axis equal
 
+%% visualize coverage of every waypoint
+
 figure
 plot(target_area_meters, 'FaceColor', 'g')
 hold on
@@ -70,8 +72,10 @@ for  i = 1 : size(waypoint, 1)
 
 end
 
-ref_height =  transpose(ones(1, size(waypoint, 1))*1); %% add reference altitude to waypoint
-waypoint3D = [waypoint, ref_height] % waypoints in 3D space
+%% add reference altitude to waypoint
+
+ref_height =  transpose(ones(1, size(waypoint, 1))*1);
+waypoint3D = [waypoint, ref_height]
 
 
 

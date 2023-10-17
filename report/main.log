@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  17 OCT 2023 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  17 OCT 2023 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -861,48 +861,69 @@ Loading module `pdfsupport' ...
 Loading module `patch' ...
 Loading module `definitions' ...
 Loading module `upgrade' ...
+) (C:\Users\paolo\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+
+(C:\Users\paolo\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen277
+\captionmargin=\dimen278
+\caption@leftmargin=\dimen279
+\caption@rightmargin=\dimen280
+\caption@width=\dimen281
+\caption@indent=\dimen282
+\caption@parindent=\dimen283
+\caption@hangindent=\dimen284
+Package caption Info: Standard document class detected.
 )
-\c@g@acro@cpp@int=\count333
-\c@g@acro@uav@int=\count334
-\c@g@acro@gcs@int=\count335
-\c@g@acro@qgc@int=\count336
-\c@g@acro@ros@int=\count337
-\c@g@acro@sitl@int=\count338
- (main.aux)
+\c@caption@flags=\count333
+\c@continuedfloat=\count334
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+\c@g@acro@cpp@int=\count335
+\c@g@acro@uav@int=\count336
+\c@g@acro@gcs@int=\count337
+\c@g@acro@qgc@int=\count338
+\c@g@acro@ros@int=\count339
+\c@g@acro@sitl@int=\count340
+\c@g@acro@wsl@int=\count341
+
+(main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
 
 (C:\Users\paolo\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
-\scratchdimen=\dimen277
+\scratchcounter=\count342
+\scratchdimen=\dimen285
 \scratchbox=\box88
-\nofMPsegments=\count340
-\nofMParguments=\count341
+\nofMPsegments=\count343
+\nofMParguments=\count344
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count342
-\MPscratchDim=\dimen278
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
+\MPscratchCnt=\count345
+\MPscratchDim=\dimen286
+\MPnumerator=\count346
+\makeMPintoPDFobject=\count347
 \everyMPtoPDFconversion=\toks40
 )
 (C:\Users\paolo\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -949,8 +970,8 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count345
-Package hyperref Info: Link coloring ON on input line 135.
+\c@lstlisting=\count348
+Package hyperref Info: Link coloring ON on input line 143.
 (main.out) (main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -962,9 +983,11 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 135.
+or `english'. on input line 143.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  (title_page.tex
-<unipg-logo-title-2364x1862.png, id=42, 1776.6375pt x 889.07156pt>
+<unipg-logo-title-2364x1862.png, id=46, 1776.6375pt x 889.07156pt>
 File: unipg-logo-title-2364x1862.png Graphic file (type png)
 <use unipg-logo-title-2364x1862.png>
 Package pdftex.def Info: unipg-logo-title-2364x1862.png  used on input line 6.
@@ -992,7 +1015,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.141 	\clearpage
+l.149 	\clearpage
                   [1] (sections/introduction.tex
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
 5.
@@ -1014,42 +1037,59 @@ File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 8.
+nput line 13.
 
 (../simulator/main.m
 consecutive:
-)) [5] (main.bbl) [6
+[5])
+<images/target_area_selection.png, id=160, 1445.4pt x 777.65532pt>
+File: images/target_area_selection.png Graphic file (type png)
+<use images/target_area_selection.png>
+Package pdftex.def Info: images/target_area_selection.png  used on input line 1
+6.
+(pdftex.def)             Requested size: 448.1309pt x 241.10625pt.
+ (../simulator/main.m
+consecutive:
+[6 <./images/target_area_selection.png>]) (../simulator/WSL_connection.m
+[7]) (../simulator/WSL_connection.m
+consecutive:
+)) [8] (main.bbl) [9
 
 ] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 56951096AE9A5FAD15F59B323CAE0A7F;1165.
+(rerunfilecheck)             Checksum: 647848EBF76EAE3571781351ACD1A892;1334.
  ) 
 Here is how much of TeX's memory you used:
- 34873 strings out of 475284
- 721428 string characters out of 2774104
- 1399467 words of memory out of 3000000
- 55754 multiletter control sequences out of 15000+600000
- 489213 words of font info for 78 fonts, out of 8000000 for 9000
+ 36413 strings out of 475284
+ 753457 string characters out of 2774104
+ 1517615 words of memory out of 3000000
+ 57185 multiletter control sequences out of 15000+600000
+ 490624 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,89p,856b,1785s stack positions out of 10000i,1000n,20000p,200000b,80000s
- <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+ 84i,12n,89p,856b,2695s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss
 0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecss0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi450\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ectt1095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\tcss1095.pk> <C:\Users\paolo\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\paolo\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\paolo\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\paolo\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\
-paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\
-Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1728.pk
->
-Output written on main.pdf (7 pages, 468106 bytes).
+0\ecsx0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ectt0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecss0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi450\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\paolo\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1095.pk> <C:\Users\paolo\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\paolo\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\
+paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\
+Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk
+> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1
+095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecsx1728.pk><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on main.pdf (10 pages, 2884657 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 847 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

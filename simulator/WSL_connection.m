@@ -1,3 +1,5 @@
+%% connect to WSL
+
 % get ip addresses needed to communicate with WSL
 
 [~, ipAdd_wsl] = system('wsl ip -4 addr show eth0 | findstr "inet"');
@@ -21,7 +23,7 @@ rosinit
 rostopic list
 
 
-%%
+%% publish waypoint
 
 % publisher
 waypoint_pub = rospublisher('/MATLAB_waypoint', 'geometry_msgs/PoseArray')
