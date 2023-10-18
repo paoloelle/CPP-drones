@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  17 OCT 2023 16:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  18 OCT 2023 21:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -987,7 +987,7 @@ or `english'. on input line 143.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (title_page.tex
-<unipg-logo-title-2364x1862.png, id=46, 1776.6375pt x 889.07156pt>
+<unipg-logo-title-2364x1862.png, id=54, 1776.6375pt x 889.07156pt>
 File: unipg-logo-title-2364x1862.png Graphic file (type png)
 <use unipg-logo-title-2364x1862.png>
 Package pdftex.def Info: unipg-logo-title-2364x1862.png  used on input line 6.
@@ -1042,7 +1042,7 @@ nput line 13.
 (../simulator/main.m
 consecutive:
 [5])
-<images/target_area_selection.png, id=160, 1445.4pt x 777.65532pt>
+<images/target_area_selection.png, id=171, 1445.4pt x 777.65532pt>
 File: images/target_area_selection.png Graphic file (type png)
 <use images/target_area_selection.png>
 Package pdftex.def Info: images/target_area_selection.png  used on input line 1
@@ -1053,43 +1053,59 @@ consecutive:
 [6 <./images/target_area_selection.png>]) (../simulator/WSL_connection.m
 [7]) (../simulator/WSL_connection.m
 consecutive:
-)) [8] (main.bbl) [9
+) [8]
+(C:\Users\paolo\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+[9] [10]
+Overfull \hbox (74.45436pt too wide) in paragraph at lines 194--195
+[]\T1/cmss/m/n/10.95 On the first ter-mi-nal run the com-mand \T1/cmtt/m/n/10.9
+5 $ roslaunch PX4-Autopilot/launch/mavros_posix_sitl.launch
+ []
+
+<images/rqt_graph view.png, id=413, 1445.4pt x 776.9025pt>
+File: images/rqt_graph view.png Graphic file (type png)
+<use images/rqt_graph view.png>
+Package pdftex.def Info: images/rqt_graph view.png  used on input line 202.
+(pdftex.def)             Requested size: 448.1309pt x 240.87285pt.
+) [11] [12 <./images/rqt_graph view.png>] (main.bbl) [13
 
 ] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 647848EBF76EAE3571781351ACD1A892;1334.
+(rerunfilecheck)             Checksum: E0970DF40FB0BE3FE971E898305D4F16;1621.
  ) 
 Here is how much of TeX's memory you used:
- 36413 strings out of 475284
- 753457 string characters out of 2774104
- 1517615 words of memory out of 3000000
- 57185 multiletter control sequences out of 15000+600000
- 490624 words of font info for 81 fonts, out of 8000000 for 9000
+ 36774 strings out of 475284
+ 758340 string characters out of 2774104
+ 1538413 words of memory out of 3000000
+ 57390 multiletter control sequences out of 15000+600000
+ 491452 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,89p,856b,2695s stack positions out of 10000i,1000n,20000p,200000b,80000s
- <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss
+ <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi
 0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecsx0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ectt0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecss0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi450\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\paolo\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1095.pk> <C:\Users\paolo\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\paolo\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\
+0\tcss0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecsx0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ectt0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi450\ecss0800.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\paolo\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\paolo\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\paolo\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1095.pk> <C:\Users\paolo\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\
 paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\
 Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk
-> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1
+> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1
 095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecsx1728.pk><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmmi9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmr9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on main.pdf (10 pages, 2884657 bytes).
+\ecsx1095.pk> <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecsx1728.pk><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on main.pdf (14 pages, 3047312 bytes).
 PDF statistics:
- 847 PDF objects out of 1000 (max. 8388607)
- 159 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1102 PDF objects out of 1200 (max. 8388607)
+ 311 named destinations out of 1000 (max. 500000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 

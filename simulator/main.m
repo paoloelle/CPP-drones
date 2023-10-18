@@ -38,7 +38,7 @@ grid on
 
 %% CPP algorithm
 
-%target_area_meters = polyshape([0 2 2 0], [0 0 2 2]) % only for test
+target_area_meters = polyshape([0 2 2 0], [0 0 2 2]) % only for test
 
 robot_footprint = polyshape([0 1 1 0], [0 0 1 1]);
 waypoint = calculateWaypoint(target_area_meters, robot_footprint); % CPP algorithm

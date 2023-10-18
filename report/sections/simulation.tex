@@ -32,3 +32,174 @@ This script is responsible for the connection with \ac{wsl}, which means that al
 
 In addition, the second section is responsible of instantiating a new node which publish the waypoint list\footnote{The code assumes that there is a matrix variable named \texttt{waypoint3D}, wtih dimensions $N \times 3$, where $N$ represents the number of waypoint and the columns are the $xyz$ coordinates in the space.} in the topic named \texttt{/MATLAB\_waypoint}.
 \lstinputlisting[language=Octave, linerange={26-47}, firstnumber=26]{../simulator/WSL_connection.m}
+
+\subsection{WSL environment}
+\ac{wsl} is used to run the simulations, it exploits the PX4 autopilot with Gazebo and MAVROS. First of all the following components need to be installed:
+\begin{itemize}
+	\item PX4 autopitlot folder, downloadable by following the section named \href{https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html}{\textit{Ubuntu Development Environment}}. 
+	\item \ac{ros} and MAVROS\footnote{The installation of \ac{ros} and MAVROS is not covered in this guide.}
+\end{itemize}
+The idea behind the simulation is to use MAVROS to drive in off-board mode a simulated quadcopter in Gazebo using the waypoint calculated in MATLAB. As a result, we need a ac{ros} that is capable of subscribing to the topic named \texttt{/MATLAB\_waypoint} to recover the waypoint list. By following PX4 documentation sections named \href{https://docs.px4.io/main/en/ros/mavros_offboard_python.html}{\textit{MAVROS Offboard control example (Python)
+}} is easy to understand how to develop a new \ac{ros} package\footnote{\texttt{catkin\_make} can be used instead of\texttt{catkin build}, for more details take a look at ROS documentation section named \href{http://wiki.ros.org/ROS/Tutorials/CreatingPackage}{\textit{Creating a ROS Package}.
+}}.
+The file implemented to create the rosnode is called \texttt{waypoint\_manager.py}. 
+
+\subsubsection*{Waypoint\_manager.py}
+The code should be easily readable by the user, for more details contact the author. %TODO explain the code 
+ % the code is written in lstlisting env beacause is not possible to link it since it lies in WSL
+\begin{lstlisting}[language=Python]
+	#!/usr/bin/env python3
+	
+	import rospy
+	from geometry_msgs.msg import PoseStamped, Point, PoseArray
+	from mavros_msgs.msg import State
+	from mavros_msgs.srv import CommandBool, CommandBoolRequest, SetMode, SetModeRequest
+	from math import dist
+	
+	
+	current_state = State()
+	
+	waypoint_index = 0
+	waypointList = []
+	waypointReceived = False # flag to check if waypoint list is received
+	nextWaypoint = [0, 0, 0]
+	
+	
+	
+	def state_cb(msg):
+	global current_state
+	current_state = msg
+	
+	
+	def buildWPArray(data):
+	for index in range(len(data.poses)):
+	waypointList.append([data.poses[index].position.x, data.poses[index].position.y, data.poses[index].position.z])
+	
+	
+	def getNextWP(currentPosition, threshold):
+	
+	global waypoint_index
+	global waypointList
+	global nextWaypoint
+	
+	try: 
+	currentWaypoint = waypointList[waypoint_index]
+	nextWaypoint = currentWaypoint
+	
+	if dist(currentPosition, currentWaypoint) < threshold: # compute euclidean 3D distance
+	waypoint_index += 1
+	nextWaypoint = waypointList[waypoint_index]
+	rospy.loginfo('Next waypoint: ' + str(nextWaypoint))             
+	
+	except IndexError:
+	pass
+	
+	
+	return nextWaypoint
+	
+	
+	
+	def WP_callback(data):
+	
+	if waypointReceived:
+	
+	targetWP = getNextWP([data.pose.position.x,
+	data.pose.position.y,
+	data.pose.position.z], threshold=.2)          
+	
+	
+	
+	# Create a PoseStamped message
+	pose_msg = PoseStamped()
+	pose_msg.header.stamp = rospy.Time.now()
+	pose_msg.pose.position.x = targetWP[0]
+	pose_msg.pose.position.y = targetWP[1]
+	pose_msg.pose.position.z = targetWP[2]
+	pose_msg.pose.orientation.x = 0.0
+	pose_msg.pose.orientation.y = 0.0
+	pose_msg.pose.orientation.z = 0.0
+	pose_msg.pose.orientation.w = 0.0
+	
+	currentWaypoint_pub.publish(pose_msg)
+	
+	#else:
+	#    rospy.loginfo('Waiting for waypoint')
+	
+	if __name__ == '__main__':
+	
+	try:
+	
+	rospy.init_node('waypoint_manager')
+	
+	# subscribers
+	state_sub = rospy.Subscriber("mavros/state", State, callback = state_cb)
+	position_sub = rospy.Subscriber('mavros/local_position/pose', PoseStamped, callback = WP_callback)
+	
+	# publisher
+	currentWaypoint_pub = rospy.Publisher('/mavros/setpoint_position/local', PoseStamped, queue_size=10)
+	
+	
+	rospy.wait_for_service("/mavros/cmd/arming")
+	arming_client = rospy.ServiceProxy("mavros/cmd/arming", CommandBool) 
+	
+	rospy.wait_for_service("/mavros/set_mode")
+	set_mode_client = rospy.ServiceProxy("mavros/set_mode", SetMode)
+	
+	waypointMessage = rospy.wait_for_message("/MATLAB_waypoint", PoseArray)
+	buildWPArray(waypointMessage)
+	rospy.loginfo("Waypoint list: " + str(waypointList))
+	waypointReceived = True    
+	
+	
+	# Setpoint publishing MUST be faster than 2Hz
+	rate = rospy.Rate(20)
+	
+	# Wait for Flight Controller connection
+	while(not rospy.is_shutdown() and not current_state.connected):
+	rate.sleep()
+	
+	offb_set_mode = SetModeRequest()
+	offb_set_mode.custom_mode = 'OFFBOARD'
+	
+	arm_cmd = CommandBoolRequest()
+	arm_cmd.value = True
+	
+	last_req = rospy.Time.now()
+	
+	while(not rospy.is_shutdown()):
+	if(current_state.mode != "OFFBOARD" and (rospy.Time.now() - last_req) > rospy.Duration(5.0)):
+	if(set_mode_client.call(offb_set_mode).mode_sent == True):
+	rospy.loginfo("OFFBOARD enabled")
+	
+	last_req = rospy.Time.now()
+	else:
+	if(not current_state.armed and (rospy.Time.now() - last_req) > rospy.Duration(5.0)):
+	if(arming_client.call(arm_cmd).success == True):
+	rospy.loginfo("Vehicle armed")
+	
+	last_req = rospy.Time.now()
+	
+	rate.sleep()
+	
+	rospy.spin()
+	
+	except rospy.ROSInterruptException:
+	rospy.logwarn("Node Interrupted")
+\end{lstlisting}
+
+\subsection{Execute simulation}
+Is recommendable to don't use a \texttt{.launch}, launch all the files from different terminal. These are the steps to successfully run the simulation:
+\begin{enumerate}
+	\item Run \texttt{main.m} file to calculate the waypoints
+	\item On the first terminal run the command \texttt{\$ roslaunch PX4-Autopilot/launch/mavros\_posix\_sitl.launch} to launch the PX4 autopoilot and Gazebo environment
+	\item On the second terminal run the command \\
+	\texttt{\$ rosrun offboard\_py waypoint\_manager.py} to launch the \texttt{waypoint\_manager} node
+	\item Run \texttt{WSL\_connection.m} to send the waypoint list to the \texttt{waypoint\_manager} node
+\end{enumerate}
+After this the situation should look like the one depicted in Figure \ref{fig:rqt_graph_view}.
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=\linewidth]{"images/rqt_graph view"}
+	\caption{Node and topic view focused on \texttt{waypoint\_manager} node.}
+	\label{fig:rqt_graph_view}
+\end{figure}
