@@ -73,5 +73,24 @@ end
 ref_height =  transpose(ones(1, size(waypoint, 1))*1); %% add reference altitude to waypoint
 waypoint3D = [waypoint, ref_height] % waypoints in 3D space
 
+%% load rosbag
 
+clc
 
+bag = rosbag('rosbag_1.bag'); % load rosbag file registered from simulation
+
+% retrive quadcopter position
+quadcopter_pos = select(bag, 'Topic', '/mavros/local_position/pose', 'Time', [200 bag.EndTime])
+quadcopter_pos = timeseries(quadcopter_pos, 'Pose.Position.X', 'Pose.Position.Y', 'Pose.Position.Z')
+
+time = quadcopter_pos.Time;
+x = quadcopter_pos.Data(:, 1); % X is in the first column
+y = quadcopter_pos.Data(:, 2); % Y is in the second column
+z = quadcopter_pos.Data(:, 3); % Z is in the third column
+
+figure
+scatter3(waypoint3D(:,1), waypoint3D(:,2), waypoint3D(:,3), '*r')
+axis([0, 1.8 0, 1.8, 0, 1.6])
+hold on
+
+plot3(x(:), y(:), z(:), 'b--')

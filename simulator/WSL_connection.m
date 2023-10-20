@@ -25,6 +25,8 @@ rostopic list
 
 %% publish waypoint
 
+clc
+
 % publisher
 waypoint_pub = rospublisher('/MATLAB_waypoint', 'geometry_msgs/PoseArray')
 
@@ -45,5 +47,7 @@ for i = 1:length(waypoint3D)
 end
 
 send(waypoint_pub, waypointList_msg); % send this message only one time
+
+
 
 
