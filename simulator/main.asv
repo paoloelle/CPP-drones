@@ -92,7 +92,8 @@ figure
 scatter3(waypoint3D(:,1), waypoint3D(:,2), waypoint3D(:,3), '*r')
 hold on
 plot3(x(:), y(:), z(:), 'b--')
-plot(target_area_meters, 'FaceColor', 'g')
+plot
+
 
 title('Drone trajectory')
 xlabel('X')
