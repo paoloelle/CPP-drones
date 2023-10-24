@@ -6,8 +6,8 @@ clc
 
 basemap = "satellite";
 geobasemap(basemap)
-longitude = 43.116118
-latitude = 12.525492
+longitude = 43.116118;
+latitude = 12.525492;
 [long_Lowlim, longUpLim] = roundNumber_2digits(longitude);
 [lat_LowLim, latUpLim] = roundNumber_2digits(latitude);
 geoplot([long_Lowlim, longUpLim], [lat_LowLim, latUpLim])
@@ -38,10 +38,12 @@ grid on
 
 %% CPP algorithm
 
-target_area_meters = polyshape([0 4 4 0], [0 0 2 2]) % only for test
+% target_area_meters = polyshape([0 3 3 0], [0 0 2 2]) % only for test
 
-robot_footprint = polyshape([0 1 1 0], [0 0 1 1]);
-waypoint = calculateWaypoint(target_area_meters, robot_footprint); % CPP algorithm
+robot_footprint = polyshape([0 100 100 0], [0 0 100 100]);
+waypoint = calculateWaypoint(target_area_meters, robot_footprint);
+% the function above can be seen as the CPP algorithm if we leave the waypoint in the
+% order calculate by the function. 
 
 figure
 plot(target_area_meters, 'FaceColor', 'g')
@@ -53,25 +55,51 @@ ylabel('Y (m)')
 grid on
 axis equal
 
-figure
-plot(target_area_meters, 'FaceColor', 'g')
-hold on
-scatter(waypoint(:, 1), waypoint(:, 2), '*r')
-title('Target area waypoints and robot footprint')
-xlabel('X (m)')
-ylabel('Y (m)')
-grid on
-axis equal
+% Set labels to be displayed near the symbols
+labels = 1:size(waypoint, 1);  % Assuming you want to label each waypoint with numbers 1, 2, 3, ...
+labelOffsets = [15, 15];  % Adjust the offsets for label positioning
 
-for  i = 1 : size(waypoint, 1)
-
-    actual_footprint = moveFootprint(waypoint(i, 1), waypoint(i,2), robot_footprint);
-    plot(actual_footprint, 'FaceColor', 'y')
-
+% Add text labels near the symbols
+for i = 1:size(waypoint, 1)
+    x = waypoint(i, 1) + labelOffsets(1);
+    y = waypoint(i, 2) + labelOffsets(2);
+    text(x, y, num2str(labels(i)), 'FontSize', 10);
 end
+
+
+% figure
+% plot(target_area_meters, 'FaceColor', 'g')
+% hold on
+% scatter(waypoint(:, 1), waypoint(:, 2), '*r')
+% title('Target area waypoints and robot footprint')
+% xlabel('X (m)')
+% ylabel('Y (m)')
+% grid on
+% axis equal
+
+% for  i = 1 : size(waypoint, 1)
+% 
+%     actual_footprint = moveFootprint(waypoint(i, 1), waypoint(i,2), robot_footprint);
+%     plot(actual_footprint, 'FaceColor', 'y')
+% 
+% end
 
 ref_height =  transpose(ones(1, size(waypoint, 1))*1); %% add reference altitude to waypoint
 waypoint3D = [waypoint, ref_height] % waypoints in 3D space
+
+%% traveling salesman problem (TSP)
+
+[p,L] = tspsearch(waypoint);
+tspplot(p,waypoint)
+grid ..
+
+
+
+
+
+
+
+
 
 %% load rosbag
 
