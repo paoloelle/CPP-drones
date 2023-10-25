@@ -3,8 +3,8 @@
 clc
 close all
 
-x = [0.5 1.0 0.1 1.2 1.5 0.0 0.3 0.6 0.8 0.3 0.9]';
-y = [0.2 1.8 0.4 0.8 1.6 0.0 0.3 1.4 1.0 0.9 0.2]';
+x = [0.5 1.0 0.3 1.2 1.5 0.0 3.4 2.1 3.1]';
+y = [0.2 1.8 0.4 0.8 1.6 0.0 2.2 0.6 4.2]';
 
 % waypoints = [x', y']
 figure
@@ -19,18 +19,19 @@ dist = hypot(x(idxs(:,1)) - x(idxs(:,2)), ...
              y(idxs(:,1)) - y(idxs(:,2)))
 lendist = length(dist);
 
+% create graph
 G = graph(idxs(:,1),idxs(:,2));
 figure
 movegui(gcf, 'center');
 hGraph = plot(G,'XData',x,'YData',y,'LineStyle','none','NodeLabel',{});
 
-tsp = optimproblem;
-trips = optimvar('trips',lendist,1,'Type','integer','LowerBound',0,'UpperBound',1);
+tsp = optimproblem; % Create optimization problem
+trips = optimvar('trips',lendist,1,'Type','integer','LowerBound',0,'UpperBound',1); % Create optimization variable
 tsp.Objective = dist'*trips;
 
-constr2trips = optimconstr(nStops,1);
+constr2trips = optimconstr(nStops,1); % Create empty optimization constraint array
 for stop = 1:nStops
-    whichIdxs = outedges(G,stop); % Identify trips associated with the stop
+    whichIdxs = outedges(G,stop); % Identify trips associated with the stop (outgoing edges from node)
     constr2trips(stop) = sum(trips(whichIdxs)) == 2;
 end
 tsp.Constraints.constr2trips = constr2trips;
@@ -83,3 +84,22 @@ title('Solution with Subtours Eliminated');
 hold off
 
 disp(output.absolutegap)
+
+%%
+
+unorderedList = Gsol.Edges.EndNodes
+
+orderedList = unorderedList(1,1);
+
+% index = (unorderedList(:,1) == nextWP)
+
+nextWP = unorderedList(1,1)
+
+% while ~isempty(unorderedList)
+    row_index = unorderedList((unorderedList(:,:) == nextWP), :)
+    
+    
+
+
+ 
+
