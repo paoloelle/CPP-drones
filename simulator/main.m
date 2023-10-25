@@ -38,9 +38,9 @@ grid on
 
 %% CPP algorithm
 
-% target_area_meters = polyshape([0 3 3 0], [0 0 2 2]) % only for test
+target_area_meters = polyshape([0 4 4 0], [0 0 2 2]) % only for test
 
-robot_footprint = polyshape([0 100 100 0], [0 0 100 100]);
+robot_footprint = polyshape([0 1 1 0], [0 0 1 1]);
 waypoint = calculateWaypoint(target_area_meters, robot_footprint);
 % the function above can be seen as the CPP algorithm if we leave the waypoint in the
 % order calculate by the function. 
@@ -86,18 +86,6 @@ end
 
 ref_height =  transpose(ones(1, size(waypoint, 1))*1); %% add reference altitude to waypoint
 waypoint3D = [waypoint, ref_height] % waypoints in 3D space
-
-%% traveling salesman problem (TSP)
-
-[p,L] = tspsearch(waypoint);
-tspplot(p,waypoint)
-grid ..
-
-
-
-
-
-
 
 
 
