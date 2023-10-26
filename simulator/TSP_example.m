@@ -87,19 +87,33 @@ disp(output.absolutegap)
 
 %%
 
-unorderedList = Gsol.Edges.EndNodes
-
-orderedList = unorderedList(1,1);
-
-% index = (unorderedList(:,1) == nextWP)
-
-nextWP = unorderedList(1,1)
-
-% while ~isempty(unorderedList)
-    row_index = unorderedList((unorderedList(:,:) == nextWP), :)
-    
+edges = Gsol.Edges.EndNodes
     
 
+starting_node = 1; % Change this to your desired starting node
+sorted_nodes = [starting_node];
 
+
+while ~isempty(edges)
+    
+    idx = find(edges(:,1) == starting_node | edges(:,2) == starting_node);
+    
+    if edges(idx, 1) == starting_node 
+        next_node = edges(idx, 2);
+        next_node = next_node(1); % only for the first iteration
+    else 
+        next_node = edges(idx, 1);
+    end
+        
+    edges(idx, :) = []; % remove currente edge from the list
+
+    sorted_nodes = [sorted_nodes, next_node];
+
+    starting_node = next_node;
+
+end
+
+disp('Sorted nodes:')
+disp(sorted_nodes);
  
 
