@@ -21,16 +21,11 @@ for x = x_lim_targetArea(1) : waypoint_spacing_x : x_lim_targetArea(2)
         [int_x, ~] = checkIntersection(centered_footprint, target_area);
 
         if int_x >= 0
-            %waypoint = [waypoint, [tmp_x ; tmp_y]];
             waypoint = [waypoint; tmp_x, tmp_y];
         end
-              
+
     end
 
 end
 
 end
-
-
-
-

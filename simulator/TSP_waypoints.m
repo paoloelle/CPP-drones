@@ -1,4 +1,4 @@
-function [ordered_waypoint] = TSP_waypoint(waypoints)
+function [ordered_waypoints] = TSP_waypoints(waypoints, varargin)
 
 x = waypoints(:,1);
 y = waypoints(:,2);
@@ -13,9 +13,15 @@ lendist = length(dist);
 
 G = graph(idxs(:,1),idxs(:,2));
 figure
+if ~isempty(varargin)
+     plot(varargin{1}, 'FaceColor', 'g')
+end
 movegui(gcf, 'center');
-hGraph = plot(G,'XData',x,'YData',y,'LineStyle','none','NodeLabel',{});
 grid on
+
+
+hold on
+hGraph = plot(G,'XData',x,'YData',y,'LineStyle','none','NodeLabel',{}, 'NodeColor', 'b');
 
 
 
@@ -38,7 +44,9 @@ tspsol.trips = logical(round(tspsol.trips));
 Gsol = graph(idxs(tspsol.trips,1),idxs(tspsol.trips,2),[],numnodes(G));
 
 hold on
-highlight(hGraph,Gsol,'LineStyle','-')
+highlight(hGraph,Gsol,'LineStyle','-', 'EdgeColor', 'b')
+
+
 
 
 tourIdxs = conncomp(Gsol);
@@ -65,7 +73,7 @@ while numtours > 1 % Repeat until there is just one subtour
     
     % Plot new solution
     hGraph.LineStyle = 'none'; % Remove the previous highlighted path
-    highlight(hGraph,Gsol,'LineStyle','-')
+    highlight(hGraph,Gsol,'LineStyle','-', 'EdgeColor', 'b')
     drawnow
 
     % How many subtours this time?
@@ -104,7 +112,7 @@ while ~isempty(edges)
 
 end
 
-ordered_waypoint = sorted_nodes;
+ordered_waypoints = sorted_nodes;
 
 disp('Sorted nodes:')
 disp(sorted_nodes);
