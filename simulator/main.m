@@ -13,7 +13,7 @@ latitude = 12.525492;
 geoplot([long_Lowlim, longUpLim], [lat_LowLim, latUpLim])
 set(gcf, 'WindowState', 'maximized');
 
-target_area = drawpolygon("Color", 'y'); % 1 column = latitude, 2 column = longitude
+target_area = drawpolygon("Color", 'y'); 
 
 target_area = polyshape(target_area.Position(:,2), target_area.Position(:,1));
 close
@@ -38,12 +38,12 @@ grid on
 
 %% CPP algorithm
 
-target_area_meters = polyshape([0 4 4 0], [0 0 2 2]) % only for test
+target_area_meters = polyshape([0 4 4 0], [0 0 3 3]) % only for test
 
 robot_footprint = polyshape([0 1 1 0], [0 0 1 1]);
-waypoint = calculateWaypoint(target_area_meters, robot_footprint);
+waypoints = calculateWaypoints(target_area_meters, robot_footprint);
 % the function above can be seen as the CPP algorithm if we leave the waypoint in the
-% order calculate by the function. 
+% order calculated by the function (of course this waypoints aren't optimized regsarding any metrics)
 
 
 

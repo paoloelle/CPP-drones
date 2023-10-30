@@ -1,4 +1,4 @@
-function waypoint = calculateWaypoint(target_area, robot_footprint)
+function waypoint = calculateWaypoints(target_area, robot_footprint)
 
 [x_lim_targetArea, y_lim_targetArea] = boundingbox(target_area);
 
