@@ -36,9 +36,9 @@ xlabel('X (m)')
 ylabel('Y (m)')
 grid on
 
-%% calculation of waypoints
+%% compututation of waypoints
 
-% target_area_meters = polyshape([0 4 4 0], [0 0 3 3]); % only for test
+ % target_area_meters = polyshape([0 4 4 0], [0 0 3 3]); % only for test
 
 robot_footprint = polyshape([0 50 50 0], [0 0 50 50]);
 % specify the footprint of the sensor mounted on the UAV, the algorithm
@@ -47,8 +47,7 @@ robot_footprint = polyshape([0 50 50 0], [0 0 50 50]);
 
 waypoints = calculateWaypoints(target_area_meters, robot_footprint);
 % the function above can be seen as the CPP algorithm if we leave the waypoint in the
-% order calculated by the function (of course this waypoints aren't optimized regsarding any metrics)
-
+% order calculated by the function (of course this waypoints aren't optimized regarding any metrics)
 
 figure
 plot(target_area_meters, 'FaceColor', 'g')
@@ -62,7 +61,7 @@ axis equal
 
 % Set labels to be displayed near the waypoints
 labels = 1:size(waypoints, 1);  % Assuming you want to label each waypoint with numbers 1, 2, 3, ...
-labelOffsets = [0.1, 0.1];  % Adjust the offsets for label positioning
+labelOffsets = [0.15, 0.15];  % Adjust the offsets for label positioning
 
 % Add text labels near the symbols
 for i = 1:size(waypoints, 1)
@@ -71,34 +70,23 @@ for i = 1:size(waypoints, 1)
     text(x, y, num2str(labels(i)), 'FontSize', 10);
 end
 
-%% algorithm to order the waypoints based on some metric
+%% sort waypoints and add reference altitude
 
-waypoint_ordered = TSP_waypoints(waypoints, target_area_meters)
+waypoints_sequence = TSP_waypoints(waypoints, target_area_meters) % get waypoints sequence
+waypoints_ordered = waypoints(waypoints_sequence, :) % sort waypoints by the order specified in waypoint_sequence
 
-% figure
-% plot(target_area_meters, 'FaceColor', 'g')
-% hold on
-% scatter(waypoint(:, 1), waypoint(:, 2), '*r')
-% title('Target area waypoints and robot footprint')
-% xlabel('X (m)')
-% ylabel('Y (m)')
-% grid on
-% axis equal
+figure
+plot(target_area_meters, 'FaceColor', 'g')
+hold on
+scatter(waypoints(:, 1), waypoints(:, 2), '*r')
+plot(waypoints_ordered(:,1), waypoints_ordered(:,2), 'Color', 'b')
+grid on
 
-% for  i = 1 : size(waypoint, 1)
-% 
-%     actual_footprint = moveFootprint(waypoint(i, 1), waypoint(i,2), robot_footprint);
-%     plot(actual_footprint, 'FaceColor', 'y')
-% 
-% end
-
-%% add referece altitude
 
 % until now the waypoints computed where planar waypoints, for now a
-% simply reference altitude of 1 meter is added
-
-ref_height =  transpose(ones(1, size(waypoints, 1))*1); %% add reference altitude to waypoint
-waypoints3D = [waypoints, ref_height]; % waypoints in 3D space
+% dummy reference altitude of 1 meter is added
+ref_height =  transpose(ones(1, size(waypoints_ordered, 1))*1); %% add reference altitude to waypoint
+waypoints3D = [waypoints_ordered, ref_height]; % waypoints in 3D space
 
 
 
@@ -123,5 +111,3 @@ ylabel('Y (m)');
 zlabel('Z (m)');
 plot3(x, y, z)
 grid on
-
-% TODO add to the existing plot the waypoints

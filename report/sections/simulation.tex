@@ -10,7 +10,7 @@ There are two main files called \texttt{main.m} and \texttt{WSL\_connection.m}; 
 \subsubsection*{Main.m code}
 As mentioned previously the \texttt{main.m} code is responsible for determining the area of interest and the waypoint calculation.
 The first section allows the user to select an area by specifying the latitude and longitude as shown in \ref{fig:target_area_selection}. After the selection procedure the area is converted in local coordinate expressed in meters. This further step is needed because waypoints will be calculated based on robot's footprint.
-\lstinputlisting[language=Octave, linerange={5-34}, firstnumber=5]{../simulator/main.m}
+\lstinputlisting[language=Octave, linerange={5-37}, firstnumber=5]{../simulator/main.m}
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=\linewidth]{images/target_area_selection}
@@ -18,8 +18,25 @@ The first section allows the user to select an area by specifying the latitude a
 	\label{fig:target_area_selection}
 \end{figure}
 
-The next section is devoted to the application of the \ac{cpp} algorithm to the selected area, it returns a 2D or 3D waypoints, these last ones will be passed to the simulator through the \texttt{WSL\_connection.m} file.
-\lstinputlisting[language=Octave, linerange={39-74}, firstnumber=39]{../simulator/main.m}
+The next section is devoted to the computation of the waypoints related to the selected area.
+\lstinputlisting[language=Octave, linerange={39-71}, firstnumber=39]{../simulator/main.m}
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=.75\linewidth]{images/waypoints_calculation}
+	\caption{Computation of waypoints.}
+	%\label{fig:calculations_waypoints}
+\end{figure}
+
+The following part sorts the waypoints by applying the algorithm based on the \ac{tsp} \cite{tsp_wikipedia}. MATLAB solver for a general \ac{tsp} is available at \href{https://it.mathworks.com/help/optim/ug/traveling-salesman-problem-based.html}{\textit{Traveling Salesman Problem: Problem-Based}}, the function named \texttt{TSP\_waypoints} implement this example with minor adjustments. The variable named \texttt{waypoints\_sequence} stores the waypoints order, the variable named \texttt{waypoints\_ordered} stores the sequence of waypoints computed by the \ac{tsp} algorithm.
+\lstinputlisting[language=Octave, linerange={73-89}, firstnumber=73]{../simulator/main.m}
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=.7\linewidth]{images/waypoints_ordered}
+	\caption{Waypoints ordered by the \ac{tsp} algorithm.}
+	%\label{fig:ordered_waypoints}
+\end{figure}
+
+The last section is responsible for the analysis of the data collected in the simulation. An example on how to get the trajectory of the quadcopter from rostopic is provided\footnote{Please note that the file named \texttt{rosbag\_2.bag} is only an example and so the data recorded couldn't be related with the current waypoints computed}.
 
 \subsection*{WSL\_connection.m code}
 This script is responsible for the connection with \ac{wsl}, which means that allows MATLAB to interact with the rostopic executed on \ac{wsl}, it automatically recovers the ip addresses needed
@@ -39,14 +56,14 @@ In addition, the second section is responsible of instantiating a new node which
 	\item PX4 autopitlot folder, downloadable by following the section named \href{https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html}{\textit{Ubuntu Development Environment}}. 
 	\item \ac{ros} and MAVROS\footnote{The installation of \ac{ros} and MAVROS is not covered in this guide.}
 \end{itemize}
-The idea behind the simulation is to use MAVROS to drive in off-board mode a simulated quadcopter in Gazebo using the waypoint calculated in MATLAB. As a result, we need a ac{ros} that is capable of subscribing to the topic named \texttt{/MATLAB\_waypoint} to recover the waypoint list. By following PX4 documentation sections named \href{https://docs.px4.io/main/en/ros/mavros_offboard_python.html}{\textit{MAVROS Offboard control example (Python)
+The idea behind the simulation is to use MAVROS to drive in off-board mode a simulated quadcopter in Gazebo using the waypoints computed in MATLAB. As a result, we need a ac{ros} that is capable of subscribing to the topic named \texttt{/MATLAB\_waypoint} to recover the waypoint list. By following PX4 documentation sections named \href{https://docs.px4.io/main/en/ros/mavros_offboard_python.html}{\textit{MAVROS Offboard control example (Python)
 }} is easy to understand how to develop a new \ac{ros} package\footnote{\texttt{catkin\_make} can be used instead of\texttt{catkin build}, for more details take a look at ROS documentation section named \href{http://wiki.ros.org/ROS/Tutorials/CreatingPackage}{\textit{Creating a ROS Package}.
 }}.
 The file implemented to create the rosnode is called \texttt{waypoint\_manager.py}. 
 
 \subsubsection*{Waypoint\_manager.py}
 The code should be easily readable by the user, for more details contact the author. %TODO explain the code 
- % the code is written in lstlisting env beacause is not possible to link it since it lies in WSL
+ % the code is written in lstlisting env beacause is not possible to link it since it lies in WSL env
 \begin{lstlisting}[language=Python]
 	#!/usr/bin/env python3
 	
@@ -191,7 +208,7 @@ The code should be easily readable by the user, for more details contact the aut
 \subsection{Execute simulation}
 Is recommendable to don't use a \texttt{.launch}, launch all the files from different terminal. These are the steps to successfully run the simulation:
 \begin{enumerate}
-	\item Run \texttt{main.m} file to calculate the waypoints
+	\item Run \texttt{main.m} file to compute the waypoints
 	\item On the first terminal run the command \texttt{\$ roslaunch PX4-Autopilot/launch/mavros\_posix\_sitl.launch} to launch the PX4 autopoilot and Gazebo environment
 	\item On the second terminal run the command \\
 	\texttt{\$ rosrun offboard\_py waypoint\_manager.py} to launch the \texttt{waypoint\_manager} node

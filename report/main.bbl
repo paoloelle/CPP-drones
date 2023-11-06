@@ -53,4 +53,11 @@ Philipp Foehn, Elia Kaufmann, Angel Romero, Robert Penicka, Sihao Sun, Leonard
   \url{https://docs.px4.io/main/en/ros/mavros_offboard_python.html}}, {2023}.
 \newblock {Accessed: 17 October 2023}.
 
+\bibitem{tsp_wikipedia}
+{Wikipedia contributors}.
+\newblock {Travelling Salesman Problem}.
+\newblock {Available at:
+  \url{https://en.wikipedia.org/wiki/Travelling_salesman_problem}}, {2023}.
+\newblock Accessed on 2023-11-06.
+
 \end{thebibliography}
