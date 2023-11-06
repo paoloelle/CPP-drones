@@ -31,12 +31,12 @@ The following part sorts the waypoints by applying the algorithm based on the \a
 \lstinputlisting[language=Octave, linerange={73-89}, firstnumber=73]{../simulator/main.m}
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=.7\linewidth]{images/waypoints_ordered}
+	\includegraphics[width=.5\linewidth]{images/waypoints_ordered}
 	\caption{Waypoints ordered by the \ac{tsp} algorithm.}
 	%\label{fig:ordered_waypoints}
 \end{figure}
 
-The last section is responsible for the analysis of the data collected in the simulation. An example on how to get the trajectory of the quadcopter from rostopic is provided\footnote{Please note that the file named \texttt{rosbag\_2.bag} is only an example and so the data recorded couldn't be related with the current waypoints computed}.
+The last section is responsible for the analysis of the data collected in the simulation. An example on how to get the trajectory of the quadcopter from rostopic is provided\footnote{Please note that the file named \texttt{rosbag\_2.bag} is only an example and so the data recorded couldn't be related with the current waypoints computed.}.
 
 \subsection*{WSL\_connection.m code}
 This script is responsible for the connection with \ac{wsl}, which means that allows MATLAB to interact with the rostopic executed on \ac{wsl}, it automatically recovers the ip addresses needed
@@ -48,7 +48,7 @@ This script is responsible for the connection with \ac{wsl}, which means that al
 \lstinputlisting[language=Octave, linerange={1-23}, firstnumber=1]{../simulator/WSL_connection.m}
 
 In addition, the second section is responsible of instantiating a new node which publish the waypoint list\footnote{The code assumes that there is a matrix variable named \texttt{waypoint3D}, wtih dimensions $N \times 3$, where $N$ represents the number of waypoint and the columns are the $xyz$ coordinates in the space.} in the topic named \texttt{/MATLAB\_waypoint}.
-\lstinputlisting[language=Octave, linerange={26-47}, firstnumber=26]{../simulator/WSL_connection.m}
+\lstinputlisting[language=Octave, linerange={26-49}, firstnumber=26]{../simulator/WSL_connection.m}
 
 \subsection{WSL environment}
 \ac{wsl} is used to run the simulations, it exploits the PX4 autopilot with Gazebo and MAVROS. First of all the following components need to be installed:

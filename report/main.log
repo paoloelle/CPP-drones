@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  6 NOV 2023 11:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.30)  6 NOV 2023 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1065,7 +1065,7 @@ consecutive:
 File: images/waypoints_ordered.jpg Graphic file (type jpg)
 <use images/waypoints_ordered.jpg>
 Package pdftex.def Info: images/waypoints_ordered.jpg  used on input line 34.
-(pdftex.def)             Requested size: 313.69026pt x 281.53455pt.
+(pdftex.def)             Requested size: 224.06544pt x 201.0903pt.
  [8 <./images/waypoints_ordered.jpg>] (../simulator/WSL_connection.m)
 (../simulator/WSL_connection.m
 consecutive:
@@ -1079,23 +1079,23 @@ Overfull \hbox (74.45436pt too wide) in paragraph at lines 212--213
 5 $ roslaunch PX4-Autopilot/launch/mavros_posix_sitl.launch
  []
 
-<images/rqt_graph view.png, id=472, 1445.4pt x 776.9025pt>
+<images/rqt_graph view.png, id=476, 1445.4pt x 776.9025pt>
 File: images/rqt_graph view.png Graphic file (type png)
 <use images/rqt_graph view.png>
 Package pdftex.def Info: images/rqt_graph view.png  used on input line 220.
 (pdftex.def)             Requested size: 448.1309pt x 240.87285pt.
-) [13] [14 <./images/rqt_graph view.png>] (main.bbl) [15
+) [13 <./images/rqt_graph view.png>] (main.bbl) [14
 
 ] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5C93AA2AB34980980E3EAC72C139F504;1452.
  ) 
 Here is how much of TeX's memory you used:
- 36928 strings out of 475284
- 763563 string characters out of 2774104
- 1593990 words of memory out of 3000000
+ 36929 strings out of 475284
+ 763580 string characters out of 2774104
+ 1593509 words of memory out of 3000000
  57514 multiletter control sequences out of 15000+600000
- 491755 words of font info for 83 fonts, out of 8000000 for 9000
+ 491754 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,89p,856b,2695s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\paolo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi
@@ -1119,9 +1119,9 @@ dpi600\ecsx1728.pk><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmmi9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr9.pfb><C:/Users/paolo/AppData/Local/Programs/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on main.pdf (16 pages, 3253291 bytes).
+Output written on main.pdf (15 pages, 3253294 bytes).
 PDF statistics:
- 1151 PDF objects out of 1200 (max. 8388607)
- 336 named destinations out of 1000 (max. 500000)
+ 1150 PDF objects out of 1200 (max. 8388607)
+ 337 named destinations out of 1000 (max. 500000)
  126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

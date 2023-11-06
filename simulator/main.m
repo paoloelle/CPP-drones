@@ -38,7 +38,7 @@ grid on
 
 %% compututation of waypoints
 
- % target_area_meters = polyshape([0 4 4 0], [0 0 3 3]); % only for test
+% target_area_meters = polyshape([0 4 4 0], [0 0 3 3]); % only for test
 
 robot_footprint = polyshape([0 50 50 0], [0 0 50 50]);
 % specify the footprint of the sensor mounted on the UAV, the algorithm
